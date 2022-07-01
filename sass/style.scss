@@ -4,14 +4,16 @@
 body{
 font-family: "Titillium Web";
 font-size: 16px;
+
 }
 .wrapper {
    min-height: 100%;
    display: grid;
-   grid-template: minmax(100px, auto) 1fr minmax(100px, auto) / 1fr ;
+   grid-template: minmax(auto, 100px) 1fr minmax(auto, 112px) / 1fr ;
    grid-template-areas: "header"
 "main"
 "footer";
+
 }
 
 /*.conteiner{
@@ -23,11 +25,17 @@ font-size: 16px;
    background-color: #87509c;
    grid-area: header;
    display: grid;
-   grid-template: 1fr / minmax(auto,212px) minmax(auto,120px) minmax(auto, 1fr) minmax(auto,195px);
+   grid-template: 1fr / minmax(auto,14.72%) minmax(auto,8.33%) minmax(auto, 1fr) minmax(auto, 13.54%);
 
       &__logo{
       grid-column: 2 / 3;
       align-self: end;
+
+      img{
+         width: 100%;
+         height: 100%;
+      }
+
       }
 		&__menu {
       }
@@ -57,7 +65,7 @@ font-size: 16px;
 .welcome {
    background-color: #87509c;
    display: grid;
-   grid-template: minmax(auto, 145px) auto minmax(auto, 130px) minmax(auto, 145px) / minmax(auto, 1fr) minmax(auto, 908px) minmax(auto, 1fr);
+   grid-template: minmax(auto, 145px) auto minmax(auto, 130px) minmax(auto, 145px) / minmax(auto, 1fr) minmax(auto, 62.9%) minmax(auto, 1fr);
 
    &__text {
       color: #f7f3ea;
@@ -93,8 +101,14 @@ font-size: 16px;
    color: #ffffff;
    background-color: #17c2a4;
    display: grid;
-   grid-template: minmax(auto,119px) minmax(auto, 200px) minmax(auto, 1fr) minmax(auto,128px) / auto minmax(auto, 1030px) auto;
+   grid-template: minmax(auto,119px) minmax(auto, 200px) minmax(auto, 1fr) minmax(auto,128px) / 14.235% 71.52% 14.235%;
    
+   img{
+      max-width: 100%;
+      height: 100%;
+      
+   }
+
    &__description{
       grid-row: 2 / 3;
       grid-column: 2 / 3;
@@ -116,17 +130,17 @@ font-size: 16px;
       font-weight: 400;
       line-height: 26px;
       text-align: center;
-     // letter-spacing: 0.36px;
+      letter-spacing: 0.36px;
       margin: 0 auto;
    }
 
    &__row {
+
       grid-row: 3/4;
       grid-column: 2/3;
       display: grid;
-      grid-template: 1fr / repeat(4, minmax(auto, 220px));
+      grid-template: 1fr / repeat(4, 15.27%);
       gap: 10px;
-      justify-items: center;
       justify-content: space-between;
    }
 
@@ -154,7 +168,6 @@ font-size: 16px;
       }
 }
 .item-services {
-   padding: 0 10px;
    display: grid;
    grid-template:minmax(auto, 168px) minmax(auto, 20px) minmax(64px, min-content) / 1fr;
    grid-auto-flow:row;
@@ -565,9 +578,170 @@ font-size: 16px;
       }
    }
 }
+.message {
+   background-color: #3c5499;
+   color: #ffffff;
+   display: grid;
+   grid-template: minmax(auto,119px) minmax(auto, 200px) minmax(auto, 1fr) minmax(auto,122px) / minmax(auto,290px) minmax(auto, 1fr) minmax(auto,290px);
+   
+   &__description{
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
+   }
 
+   &__title {
+      position: relative;
+      &:after{
+         content: '';
+         position: absolute;
+         background-color: #273a71;
+         }
+   }
+
+   &__text {
+      /* Style for "1600 Penns" */
+      max-width: 782px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 26px;
+      text-align: center;
+      letter-spacing: 0.36px;
+      margin: 0 auto;
+   }
+
+   &__row {
+      grid-row: 3 / 4;
+      grid-column: 2 / 3;
+   }
+
+   &__form {
+      display: grid;
+      grid-template: 60px 1fr 70px / 1fr 1fr; 
+      grid-template-areas: 
+      "username usermail"
+      "usermessage usermessage"
+      "button button";
+      gap: 27px;
+      justify-content: space-between;
+      div{
+         border-radius: 4px;
+         //background-color: #273a71;
+         
+         input, textarea {
+            border-radius: 4px;
+            background-color: #273a71;            
+            padding: 22px 0 0 25px;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 400;
+            text-align: left;
+            
+            &::placeholder {
+               color: #ffffff;
+               /* Style for "Your Name" */
+               font-size: 18px;
+               font-weight: 400;
+               text-align: left;
+               
+            }
+
+          /*   Не работает
+               input [type=text] {
+                  &::placeholder
+                  {&::after{
+                     content: '*';
+                     color: #ff4444;
+                     font-family: "Arial MT";
+                     font-size: 16px;
+                     font-style: normal;
+                     letter-spacing: normal;
+                     line-height: normal;}
+                  }
+               }
+           */
+            
+         }
+         textarea{
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+         }
+      }
+      }
+
+   &__username {
+      grid-area: username;
+      max-width: auto;
+      min-height: 56px;
+      background-color: #273a71;
+   }
+
+   &__mail {
+      background-color: #273a71;
+      grid-area: usermail;
+      max-width: auto;
+      min-height: 56px;
+   }
+
+   &__message {
+      background-color: #273a71;
+      grid-area: usermessage;
+      max-width: auto;
+      min-height: 200px;
+      }
+
+   &__button {
+      grid-area: button;
+      width: 293px;
+      height: 70px;
+      background: linear-gradient(to bottom,#30bae7 0% 94.29%, #299ec4 94.29%);
+     //background-color: #eb7d4b;
+     //box-shadow: inset 0 -4px 0px #c86a40;
+      border-radius: 4px;
+      text-align: center;
+      line-height: 26.19px;
+      letter-spacing: 0.27px;
+      color: #ffffff;
+      justify-self: center;
+   }
+}
 
 .footer {
+   grid-area: footer;
+   background-color: #344b8e;
+   display: grid;
+   align-content: center;
+
+   &__menu {
+   display: grid;
+   grid-template: 1fr / minmax(auto, 251px) 1fr minmax(auto, 251px);
+   }
+
+   &__list {
+      grid-column: 2 / 3;
+      display: grid;
+      grid-row: 1fr;
+      grid-auto-flow: column;
+      
+      
+      justify-items: center;
+      
+      a {
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 29.91px;
+      letter-spacing: 0.48px;
+      }
+      li:nth-child(2) {
+         a {
+         color: #30bae7;
+         }
+      }
+   }
+
+   &__link {  
+   }
 }
 
 
