@@ -19,7 +19,6 @@ font-family: "Titillium Web";
    grid-template-areas: "header"
 "main"
 "footer";
-
 }
 
 /*.conteiner{
@@ -28,42 +27,70 @@ font-family: "Titillium Web";
 }*/
 
 .header {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100px;
+   z-index: 10;
    background-color: #87509c;
    grid-area: header;
    display: grid;
    align-items: end;
-   grid-template: 1fr / minmax(10px, 14.72%) auto 1fr minmax(10px,13.54%);
+   grid-template: 1fr / minmax(127px, prc(329, 1440)) 1fr;
+   justify-items: end;
+
+      &__burger{
+
+      }
 
       &__logo{
-      grid-column: 2 / 3;
-      
+      //justify-self: end;
       padding: 0 0 10px 5px;
-      img{
-         max-width: 100%;
-         min-width: 77px;
-         min-height: 23px;
+
+     // img{
+         //max-width: 100%;
+        // min-width: 77px;
+         //min-height: 23px;
          //overflow: hidden;
-         //object-fit: cover;*/
+         //object-fit: bottom right;}
          
-      }
+      
    }
 
 		&__menu {
+         
       }
 
 		&__list {
+         display: none;
+		}
+
+		&__link {
+      }
+}
+
+@media (min-width: 767px) {
+   .header {
+      display: grid;
+      align-items: end;
+      grid-template: 1fr / minmax(127px, prc(329, 1440)) 1fr minmax(10px,13.54%);
+      justify-items: end;
+
+      &__list{
          display: grid;
-         grid-auto-flow: column;
-         justify-content: end;
-         //grid-template-columns: repeat(auto-fit, minmax(78px, 100px));
+         
+         //grid-auto-flow: column;
+         //justify-content: end;
+         grid-template-columns: repeat(5, auto);
          text-transform: uppercase;
          gap: 6px;
          padding: 0 0 12px 0;
          font-weight: 400;
-         
-		}
+         grid-column: 2 / 3 ;
+      }
 
-		&__link {
+      &__link {
          padding: 5px 17px;
          color: #ffffff;
          &:hover{
@@ -71,6 +98,7 @@ font-family: "Titillium Web";
             border-radius: 4px;
          }
       }
+   }
 }
 .main {
    grid-area: main;
@@ -81,15 +109,14 @@ font-family: "Titillium Web";
    grid-template: auto minmax(auto, 130px) / 1fr 62.9% 1fr;
    padding-bottom: prc(145, 1440);
    &__text {
-      padding-top: 9.375%;
+      padding-top: prc(214, 1440);
       color: #f7f3ea;
       text-align: center;
       //font-size: 42px;
       font-weight: 700;
       @include adaptiv-font(42, 20);
-      
       grid-column: 2 / 3;
-      line-height: rem(46.82);
+      line-height: em(18.6);
    }
 
    &__button {
@@ -120,18 +147,17 @@ font-family: "Titillium Web";
    color: #ffffff;
    background-color: #17c2a4;
    display: grid;
-   grid-template: minmax(auto,119px) minmax(auto, 200px) minmax(auto, 1fr) minmax(auto,128px) / 14.235% 71.52% 14.235%;
-   
+   grid-template:  auto minmax(auto, 1fr)  / 14.235% 71.52% 14.235%;
+   padding: prc(119,1440) 0 prc(128,1440) 0;
+
    img{
       max-width: 100%;
-      height: 100%;
+      max-height: 100%;
       
    }
 
    &__description{
-      grid-row: 2 / 3;
       grid-column: 2 / 3;
-      
    }
 
    &__title {
@@ -144,23 +170,25 @@ font-family: "Titillium Web";
    }
 
    &__text {
-      max-width: 603px;
-      font-size: 18px;
+      //width: prc(603, 1030);
+      //font-size: 18px;
+      @include adaptiv-font(18, 14);
       font-weight: 400;
-      line-height: 26px;
+      line-height: em(23.12);
       text-align: center;
-      letter-spacing: 0.36px;
-      margin: 0 auto;
+      //letter-spacing: 0.36px;
+      margin: 0 auto prc(81, 1030);
    }
 
    &__row {
 
-      grid-row: 3/4;
-      grid-column: 2/3;
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
       display: grid;
-      grid-template: 1fr / repeat(4, 15.27%);
-      gap: 10px;
-      justify-content: space-between;
+      grid-template: 1fr / repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+
+      justify-content: center;
    }
 
    &__column {
@@ -168,12 +196,13 @@ font-family: "Titillium Web";
    }
 }
 .title {
-   font-size: 40px;
+   //font-size: 40px;
+   @include adaptiv-font(40, 20);
    font-weight: 700;
    line-height: 29.91px;
    text-align: center;
    text-transform: uppercase;
-   letter-spacing: 4px;
+   letter-spacing: em(1.6);
    padding: 0 0 21px 0;
    margin: 0 0 23px 0;
    &:after{
@@ -188,18 +217,20 @@ font-family: "Titillium Web";
 }
 .item-services {
    display: grid;
-   grid-template:minmax(auto, 168px) minmax(auto, 20px) minmax(64px, min-content) / 1fr;
+   grid-template:minmax(150px, prc(168, 250)) minmax(auto, 20px) auto / 1fr;
    grid-auto-flow:row;
    justify-items: center;
-   gap:25px;
+   gap: 25px;
    
 
    &__logo {
-      max-height: 100%;
+      //max-height: 100%;
+      //max-width: 100%
    }
 
    &__title {
-      font-size: 24px;
+      //font-size: 24px;
+      @include adaptiv-font(24, 16);
       font-weight: 700;
       line-height: 18px;
       text-transform: uppercase;
@@ -208,7 +239,8 @@ font-family: "Titillium Web";
    }
 
    &__text {
-      font-size: 16px;
+      //font-size: 16px;
+      @include adaptiv-font(16, 12);
       font-weight: 300;
       line-height: 24px;
       letter-spacing: 0.32px;
@@ -220,10 +252,11 @@ font-family: "Titillium Web";
    background-color: #e7f1f8;
    color: #3c4761;
    display: grid;
-   grid-template: minmax(auto,119px) minmax(auto, 200px) minmax(auto, 1fr) minmax(auto,128px) / auto minmax(auto, 1030px) auto;
-   
+   grid-template: auto 1fr / minmax(10px, prc(204, 1440)) prc(1040, 1440) minmax(10px, prc(205,1440));
+   padding: prc(119,1440) 0 prc(128,1440) 0;
+
    &__description{
-      grid-row: 2 / 3;
+      
       grid-column: 2 / 3;
    }
 
@@ -237,65 +270,84 @@ font-family: "Titillium Web";
    }
 
    &__text {
-      max-width: 650px;
-      font-size: 19px;
+      width: prc(650,1040);
+      //font-size: 19px;
+      @include adaptiv-font(19, 14);
       font-weight: 400;
       line-height: 26.84px;
       //letter-spacing: 0.36px;
-      margin: 0 auto;
+      margin: 0 auto prc(81, 1030);
+      text-align: center;
    }
 
    &__row {
-      grid-row: 3/4;
-      grid-column: 2/3;
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
       display: grid;
-      grid-template: 1fr / repeat(4, minmax(auto, 200px));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      column-gap: prc(80, 1040);
+      row-gap: 20px;
       justify-items: center;
-      justify-content: space-between;
+      justify-content: center;
    }
 
-   &__column {
-      
-   }
 }
 
 .item-team {
-   margin: 0 10px;
    display: grid;
-   grid-template:minmax(auto, 200px) minmax(auto, max-content) minmax(auto, max-content) minmax(64px, min-content) / 1fr;
    grid-auto-flow:row;
-   justify-items: center;
-   gap:15px;
-   font-size: 16px;
+   grid-template: minmax(auto, prc(265, 1040))  auto auto 1fr minmax(auto,32px) / 1fr;
+   //justify-items: center;
+   row-gap: 15px;
+   //font-size: 16px;
+   @include adaptiv-font(16, 12);
+   grid-auto-rows: 1fr;
 
    &__foto {
-      width: 200px;
-      height: 200px;
-      background-color: #878787;
-      border-radius: 50%;
+      //background-color: #878787;
+      //border-radius: 50%;
       margin: 0 0 26px 0;
+      position: relative;
+      padding: 0 0 100% 0;
+      
+      img {
+         
+         //height: 100%;
+         object-fit: cover;
+         border-radius: 50%;
+         position: absolute;
+         top: 0;
+         left:0;
+         width: 100%;
+         height: 100%;
+
+      }
    }
 
    &__name {
       color: #27283d;
-      font-size: 24px;
+      //font-size: 24px;
+      @include adaptiv-font(24, 14);
       font-weight: 700;
-      line-height: 18px;
+      line-height: 26px;
       text-transform: uppercase;
       letter-spacing: 0.48px;
-
+      //justify-self: center;
+      text-align: center;
    }
 
    &__position{
+      @include adaptiv-font(16, 12);
       color: #30bae7;
       font-weight: 400;
       line-height: 18px;
       letter-spacing: 0.32px;
+      justify-self: center;
       
    }
 
    &__text {
+      @include adaptiv-font(16, 12);
       font-weight: 300;
       line-height: 24px;
       letter-spacing: 0.32px;
@@ -304,20 +356,46 @@ font-family: "Titillium Web";
    }
 
    &__social {
+      //position: relative;
+      
+      display: grid;
+      grid-template-columns: minmax(auto, 32px) minmax(auto, 32px) minmax(auto, 32px);
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(auto, 32px);
+      gap: prc(10, 200);
+      justify-content: center;
+      
+      //padding: 0 0 25% 0;
    }
 
    &__link{
-      margin: 0 4px;
+      
+      position: relative;
+      padding: 0 0 100% 0;
+      
+      img {
+         //object-fit: cover;
+         //border-radius: 50%;
+         position: absolute;
+         top: 0;
+         left:0;
+         width: 100%;
+         height: 100%;
+      }
+     // margin: 0 prc(4, 200);
    }
 }
+
 .skills {
    background-color: #ffffff;
    color: #3c4761;
    display: grid;
-   grid-template: minmax(auto,119px) minmax(auto, 200px) minmax(auto, 1fr) minmax(auto,122px) / auto minmax(auto, 1030px) auto;
-   
+   grid-template: auto 1fr / minmax(10px, prc(220, 1440)) prc(1030, 1440) minmax(10px, prc(220, 1440));
+   padding: prc(119,1440) 0 prc(128,1440) 0;
+   //justify-items: center;
+
    &__description{
-      grid-row: 2 / 3;
+      
       grid-column: 2 / 3;
    }
 
@@ -331,45 +409,46 @@ font-family: "Titillium Web";
    }
 
    &__text {
-      max-width: 570px;
-      font-size: 18px;
+      //width: prc(570,1030);
+      //font-size: 18px;
+      @include adaptiv-font(18,14);
       font-weight: 400;
       line-height: 26px;
       //letter-spacing: 0.36px;
-      margin: 0 auto;
+      margin: 0 auto prc(81, 1030);
       text-align: center;
    }
 
    &__row {
-      margin: 5px 0 0 0;
-      grid-row: 3/4;
-      grid-column: 2/3;
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
       display: grid;
-      grid-template: 1fr / repeat(4, minmax(auto, 200px));
-      justify-items: center;
-      justify-content: space-between;
-   }
-
-   &__column {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      column-gap: prc(120, 1000);
+      row-gap: 30px;
+      //justify-content: center;
       
    }
+
 }
 
 .item-skills {
    display: grid;
-   grid-template:minmax(auto, 160px) minmax(auto, max-content) / 1fr;
+   grid-template: minmax(auto, 160px) auto / 1fr;
    grid-auto-flow:row;
-   justify-items: center;
-   align-items: center;
+   //justify-items: center;
+   //align-items: center;
    gap: 32px;
 
    &__circle {
-      width: 160px;
-      height: 160px;
-      font-size: 50px;
+      max-width: 100%;
+      height: 100%;
+      //font-size: 50px;
+      @include adaptiv-font(50, 36);
       font-weight: 300;
       line-height: 20.84px;
       position: relative;
+      padding: 0 0 100% 0;
       p {
          margin: 0;
          position: absolute;
@@ -381,44 +460,48 @@ font-family: "Titillium Web";
    }
 
    &__proc{
-      font-size: 32px;
+      //font-size: 32px;
+      @include adaptiv-font (32, 24);
    }
 
    &__name {
-      font-size: 24px;
+      //font-size: 24px;
+      @include adaptiv-font(24,16);
       font-weight: 700;
       line-height: 18px;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 0.48px;
+      align-self: center;
+      justify-self: center;
    }
 
 }
 #item-skills__first{
-   background: url(../img/skills/01.png), url(../img/skills/bg.png);
-   
+   background: url(../img/skills/01.png) 0 0/cover no-repeat, url(../img/skills/bg.png) 0 0/cover no-repeat;
 }
 #item-skills__second{
-   background: url(../img/skills/02.png), url(../img/skills/bg.png);
+   background: url(../img/skills/02.png) 0 0/cover no-repeat, url(../img/skills/bg.png) 0 0/cover no-repeat;
 }
 #item-skills__third{
-   background: url(../img/skills/03.png), url(../img/skills/bg.png);
+   background: url(../img/skills/03_1.png) 0 0/cover no-repeat, url(../img/skills/bg.png) 0 0/cover no-repeat;
 }
 #item-skills__fourth{
-   background: url(../img/skills/04.png), url(../img/skills/bg.png);
+   background: url(../img/skills/04.png) 0 0/cover no-repeat, url(../img/skills/bg.png) 0 0/cover no-repeat;
 }
 
 .portfolio {
-   font-size: 18px;
+   //font-size: 18px;
+   @include adaptiv-font(18, 14);
    font-weight: 400;
    color: #393939;
    background-color: #ffdd99;
    display: grid;
-   grid-template: minmax(auto,119px) minmax(auto, 200px) minmax(auto, 40px) minmax(auto, 1fr) minmax(auto, max-content) minmax(auto,109px) / auto minmax(auto, 1105px) auto;
-   justify-items: center;
+   grid-template: minmax(auto, 200px) minmax(auto, 40px) minmax(auto, 1fr) auto / 1fr prc(1103, 1440) 1fr;
+   //justify-items: center;
+   padding: prc(119,1440) 0 prc(109,1440) 0;
 
    &__description{
-      grid-row: 2 / 3;
       grid-column: 2 / 3;
    }
 
@@ -440,7 +523,7 @@ font-family: "Titillium Web";
    }
 
    &__menu {
-      grid-row: 3 / 4;
+      grid-row: 2 / 3;
       grid-column: 2 / 3;
       display: grid;
       justify-content: center;
@@ -465,19 +548,21 @@ font-family: "Titillium Web";
    }
 
    &__row {
-      padding: 60px 0 0 0;
-      grid-row: 4 / 5;
+      //padding: 60px 0 0 0;
+      grid-row: 3 / 4;
       grid-column: 2 / 3;
       display: grid;
-      grid-template: 1fr / repeat(2, 1fr);
-      grid-auto-flow: row;
-      gap: 60px 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, prc(511, 1103)));
+      //grid-auto-flow: row;
+      column-gap: 20px;
+      //row-gap: 60px;
       justify-content: center;
-      margin: 0 0 83px 0;
+      margin: 0 0 prc(83,1103) 0;
    }
 
    &__button {
-      grid-row: 5 / 6;
+      justify-self: center;
+      grid-row: 4 / 5;
       grid-column: 2 / 3;
       width: 293px;
       height: 70px;
@@ -488,9 +573,11 @@ font-family: "Titillium Web";
       text-align: center;
       line-height: 26.19px;
       letter-spacing: 0.27px;
+
          a {
          color: #ffffff;
-         font-size: 18px;
+         //font-size: 18px;
+         @include adaptiv-font(18, 14);
          font-weight: 400;
       }
    }
@@ -498,11 +585,27 @@ font-family: "Titillium Web";
 
 .item-portfolio {
 
+      display: grid;
+      grid-template: minmax(auto, 311px) 1fr / 1fr;
+      
+
    &__img {
-      margin: 0 0 30px 0;
+      
+      position: relative;
+      //padding: 0 0 25% 0;
+
+      img{
+         object-fit: contain;
+         position: absolute;
+         top: 0;
+         left:0;
+         width: 100%;
+         height: 100%;
+      }
    }
 
    &__name {
+      //justify-self: center;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 0.36px;
@@ -729,11 +832,12 @@ font-family: "Titillium Web";
    grid-area: footer;
    background-color: #344b8e;
    display: grid;
-   grid-template: 1fr / minmax(auto, 251px) minmax(496px, 1fr) minmax(auto, 251px);
+   grid-template: 1fr / minmax(10px, prc(251, 1440)) minmax(496px, 1fr) minmax(10px, prc(251, 1440));
 
    &__menu {
    grid-column: 2 / 3;
    align-content: center;
+   @include adaptiv-font(24, 16);
    display: grid;
    }
 
@@ -742,27 +846,31 @@ font-family: "Titillium Web";
       display: grid;
       //grid-row: 1fr;
       //grid-auto-flow: column;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      justify-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(80px, min-content));
+      justify-items: start;
+      justify-content: space-between;
+      @include adaptiv-font(24, 16);
+      column-gap: 25px;
       
+      li:last-child{
+         a{padding: 0;}
+      }
+   
       a {
       color: #ffffff;
       //font-size: 24px;
-      @include adaptiv-font(24, 16);
       font-weight: 400;
-      line-height: 29.91px;
-      letter-spacing: 0.48px;
-      padding: 0 5px; 
+      line-height: em(29.91);
+      letter-spacing: em(0.48);
+      padding: 0 50px 0 0;
       }
       li:nth-child(2) {
          a {
          color: #30bae7;
          }
       }
-   }
 
    &__link {  
    }
 }
-
-
+}
