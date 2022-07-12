@@ -2,8 +2,8 @@
    use PHPMailer\PHPMailer\PHPMailer;
    use PHPMailer\PHPMailer\Exception;
 
-   require 'phpmailer/src/Exception.php';
-   require 'phpmailer/src/PHPMailer.php';
+   require 'PHPMailer/src/Exception.php';
+   require 'PHPMailer/src/PHPMailer.php';
 
    $mail = new PHPMailer(true);
    $mail->CharSet = 'UTF-8';
@@ -11,7 +11,7 @@
    $mail->IsHTML(true);
 
    $mail->setFrom('Practice#1');
-   $mail->addAdress('lapagur3@gmail.com');
+   $mail->addAddress('lapagur3@gmail.com');
 
    $mail->Subject = 'My test letter';
 
